@@ -1,0 +1,67 @@
+{"darkness": {
+  "Где я?" : "almost_awake"},
+"almost_awake" : {
+  "Проснуться": "wake_up"},
+"wake_up": {
+  "Начать собираться на работу": "hallway",
+  "Поспать еще \"полчасика\"": "sleep_again"},
+"hallway": {
+  "Лучше сходить":  "bath_lose",
+  "Не пойду": "kitchen"},
+"kitchen": {
+  "Дальше!":  "stairs"},
+"stairs": {
+  "Взять": "meet_with_smoker",
+  "Не брать": "normal_street"},
+"meet_with_smoker":  {
+  "Попробовать сбежать":  "run_away",
+  "Драться за зажигалку":  "fight"},
+"run_away":  {
+  "Выйти на улицу":  "normal_street"},
+"fight":  {
+  "Ударить первым":  "bit_first",
+  "Уклониться":  "evade_lose"},
+"bit_first":  {
+  "Выйти на улицу": "normal_street"},
+"sleep_again":  {
+  "Сыграть партию в голо-шахматы":  "chess_play",
+  "Бегло собраться":  "near_lift"},
+"chess_play":  {
+  "Детский мат":  "baby_mate",
+  "Коготь бобра":  "beaver`s_claw"},
+"baby_mate":  {
+  "Отправиться к лифту":  "near_lift"},
+"beaver`s_claw":  {
+  "Отправиться к лифту":  "near_lift"},
+"near_lift":  {
+  "Вызвать лифт":  "in_lift_light"},
+"in_lift_light" : {
+  "Ну что еще?": "in_lift_dark"},
+"in_lift_dark":  {
+  "Просто ждать":  "lift_else",
+  "Сообщить диспетчеру":  "lift_lose"},
+"lift_else":  {
+  "Выйти на улицу":  "sleep_street"},
+"normal_street": {
+  "Вызвать такси (50 альтов)":  "normal_taxi",
+  "Пойти пешком":  "normal_walk"},
+"normal_taxi": {
+  "Спросить у водителя о его поведении":  "talk_to_driver_win",
+  "Выйти поскорее":  "exit_fast"},
+"normal_walk": {
+  "Победа?":  "canalisation"},
+"canalisation": {
+  "Кричать о помощи":  "wolves_lose",
+  "Молча ждать спасения":  "save_from_canal"},
+"sleep_street": {
+  "Вызвать такси (50 альтов)":  "sleep_taxi_win",
+  "Пойти пешком":  "sleep_walk"},
+"sleep_walk": {
+  "Увернуться влево":  "move_left_win",
+  "Увернуться вправо":  "move_right_lose"},
+"exit_fast": {
+  "Увернуться влево":  "move_left_win",
+  "Увернуться вправо":  "move_right_lose"},
+"save_from_canal": {
+  "Дальше..": "credit_with_win"}
+}
