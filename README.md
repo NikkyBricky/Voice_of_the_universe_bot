@@ -14,3 +14,4 @@ Enjoy!
 ![](https://github.com/NikkyBricky/Voice_of_the_universe_bot/blob/main/bot_logic.png)
 # Logic of quest(spoilers)
 ![](https://github.com/NikkyBricky/Voice_of_the_universe_bot/blob/main/quest_logic.png)
+link to git: https://github.com/NikkyBricky/Voice_of_the_universe_bot.git
