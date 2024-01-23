@@ -149,8 +149,8 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
         else:
             user_data[user_id]['show_alts'] = False
         # --------------------------------------------------------------------------------------------------------------
-
-        alts = count(current_location, user_id)  # расчет баланса
+        num_alts = user_data[user_id]['alts']
+        alts = count(current_location, num_alts)  # расчет баланса
         user_data[user_id]['alts'] = alts
         if user_data[user_id]['show_alts']:  # если пользователь на опред. локации, выведется его баланс
             text = plot[current_location]['text'] + f'\n\n  У вас сейчас {alts} альтов'

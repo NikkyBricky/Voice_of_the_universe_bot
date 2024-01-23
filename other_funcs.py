@@ -1,5 +1,4 @@
 import random
-import json
 
 
 def check_greet(message):
@@ -47,28 +46,7 @@ def answering_any(message):
     return msg
 
 
-def load_from_json():
-    # noinspection PyBroadException
-    try:
-        with open('user_data.json', 'r+', encoding='utf8') as f:
-            data = json.load(f)
-    except Exception:
-        data = {}
-
-    return data
-
-
-def save_to_json():
-    with open('user_data.json', 'w', encoding='utf8') as f:
-        json.dump(user_data, f, indent=2)
-
-
-user_data = load_from_json()
-
-
-def count(location, user_id):
-    load_from_json()
-    alts = user_data[user_id]['alts']
+def count(location, alts):
     if location in ['wake_up', 'move_right_lose', 'evade_lose', 'lift_lose', 'wolves_lose']:
         alts = 0
     else:
