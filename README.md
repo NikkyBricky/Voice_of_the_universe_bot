@@ -1,5 +1,5 @@
 # Voice_of_the_universe_bot
-a very interesting quest about some typical person in a very unusual world
+A very interesting quest about some typical person in a very unusual world
 
 [link to git](https://github.com/NikkyBricky/Voice_of_the_universe_bot.git)
 # Description
