@@ -3,7 +3,7 @@ a very interesting quest about some typical person in a very unusual world
 
 [link to git](https://github.com/NikkyBricky/Voice_of_the_universe_bot.git)
 # Description
-This is a text-quest telegram bot where you can see some piece of history and then make another one by making different choices.
+This is a text-quest telegram bot where you can see some piece of history and then make another one by choosing different options.
 
 It uses mainly Inline Keyboard and is really convenient to deal with.
 # Usage:
