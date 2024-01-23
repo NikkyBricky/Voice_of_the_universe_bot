@@ -26,5 +26,8 @@ Enjoy!
 You can find pictures here:
 https://postimg.cc/gallery/NGWQ1Hn
 
-While running quest, you'll see a strange number: 42.
+# Features:
+1. Mostly Inline Keyboard bot
+2. Bot is hosted on yandex.cloud
+3. While running quest, you'll see a strange number: 42.
 If you want to learn more about it, I suggest you to read a humorous book "The Hitchhiker’s Guide to the Galaxy" 
