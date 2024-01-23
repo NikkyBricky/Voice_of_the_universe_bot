@@ -210,7 +210,7 @@ def show_statistics(message):
         user_data[user_id] = {'alts': 0, 'show_alts': False, 'name': user_name}
         save_to_json()
 
-    stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
+    stats = (f'Текущий баланс - {user_data[user_id]["alts"]} альтов.\n\n'
              f'Максимально возможный баланс - 250 альтов')
     keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
     msg = bot.send_message(c_id, stats, reply_markup=keyboard)
