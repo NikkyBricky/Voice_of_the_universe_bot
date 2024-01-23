@@ -126,7 +126,7 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
             bot.edit_message_caption(message_id=ms_id, chat_id=c_id, caption=cap, reply_markup=keyboard)
         return
 
-    if call.data == 'question':
+    elif call.data == 'question':
         keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Подключиться к технологии ',
                                                                    callback_data='darkness'))
         bot.edit_message_caption(chat_id=c_id, message_id=ms_id,
@@ -205,7 +205,7 @@ def show_statistics(message):
     load_from_json()
     user_id = str(message.from_user.id)
     if user_id not in user_data:
-        stats = 'Вы еще не начали квест, поэтому вашего баланса у меня пока нет.'
+        stats = 'Вы еще не начали квест, поэтому вашего баланса у меня пока нет. /start - начать квест.'
         keyboard = None
     else:
         stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
