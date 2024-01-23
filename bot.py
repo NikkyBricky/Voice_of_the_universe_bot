@@ -203,17 +203,17 @@ def about(message):
 @bot.message_handler(commands=['show_stat'])
 def show_statistics(message):
     load_from_json()
+    user_name = message.from_user.first_name
     user_id = str(message.from_user.id)
     c_id = message.chat.id
-    if user_id not in user_data:
-        stats = 'Вы еще не начали квест, поэтому вашего баланса у меня пока нет. /start - начать квест.'
-        keyboard = None
-    else:
-        stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
-                 f'Максимально возможный баланс - 250 альтов')
-        keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
-    msg = bot.send_message(c_id, stats, reply_markup=keyboard)
+    if user_id not in user_data:  # проверка регистрации пользователя (на случай, если файл user_data удален)
+        user_data[user_id] = {'alts': 0, 'show_alts': False, 'name': user_name}
+        save_to_json()
 
+    stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
+             f'Максимально возможный баланс - 250 альтов')
+    keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
+    msg = bot.send_message(c_id, stats, reply_markup=keyboard)
     ms_id = msg.message_id
     try:
         bot.delete_message(chat_id=c_id, message_id=(user_data[user_id]['ms_id_stats']))
@@ -221,7 +221,6 @@ def show_statistics(message):
         pass
     user_data[user_id]['ms_id_stats'] = ms_id
     save_to_json()
-
 
 
 @bot.message_handler(content_types=['text', 'audio', 'video', 'document', 'voice', 'photo'])
