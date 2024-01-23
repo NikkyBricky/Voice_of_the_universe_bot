@@ -50,7 +50,7 @@ def count(location, alts):
     if location in ['wake_up', 'move_right_lose', 'evade_lose', 'lift_lose', 'wolves_lose']:
         alts = 0
     else:
-        plus = {'stairs': 200, 'baby_mate': 150,
+        plus = {'kitchen': 200, 'baby_mate': 150,
                 'near_lift': 100, 'run_away': 20,
                 'bit_first': 70, 'normal_taxi': -50,
                 'sleep_taxi_win': -1500050, 'credit_with_win': -50000}

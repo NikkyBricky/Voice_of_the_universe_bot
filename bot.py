@@ -61,10 +61,10 @@ def start(message):
     # сделано, чтобы было только одно сообщение с квестом и нельзя было проходить два одновременно
     ms_id = msg.message_id
     try:
-        bot.delete_message(chat_id=c_id, message_id=(user_data[user_id]['ms_id']))
+        bot.delete_message(chat_id=c_id, message_id=(user_data[user_id]['ms_id_quest']))
     except (KeyError, telebot.apihelper.ApiTelegramException):
         pass
-    user_data[user_id]['ms_id'] = ms_id
+    user_data[user_id]['ms_id_quest'] = ms_id
     save_to_json()
 
 
@@ -204,6 +204,7 @@ def about(message):
 def show_statistics(message):
     load_from_json()
     user_id = str(message.from_user.id)
+    c_id = message.chat.id
     if user_id not in user_data:
         stats = 'Вы еще не начали квест, поэтому вашего баланса у меня пока нет. /start - начать квест.'
         keyboard = None
@@ -211,7 +212,16 @@ def show_statistics(message):
         stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
                  f'Максимально возможный баланс - 250 альтов')
         keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
-    bot.send_message(message.chat.id, stats, reply_markup=keyboard)
+    msg = bot.send_message(c_id, stats, reply_markup=keyboard)
+
+    ms_id = msg.message_id
+    try:
+        bot.delete_message(chat_id=c_id, message_id=(user_data[user_id]['ms_id_stats']))
+    except (KeyError, telebot.apihelper.ApiTelegramException):
+        pass
+    user_data[user_id]['ms_id_stats'] = ms_id
+    save_to_json()
+
 
 
 @bot.message_handler(content_types=['text', 'audio', 'video', 'document', 'voice', 'photo'])
