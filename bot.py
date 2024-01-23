@@ -44,7 +44,7 @@ def start(message):
     c_id = message.chat.id
     user_id = str(message.from_user.id)
     if user_id not in user_data:  # проверка регистрации пользователя
-        user_data[user_id] = {'alts': 0, 'show_alts': False, 'name': user_name}
+        user_data[user_id] = {"alts": 0, 'show_alts': False, 'name': user_name}
     save_to_json()
 
     # вывод приветственного сообщения
@@ -75,7 +75,7 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
     user_name = call.from_user.first_name
     user_id = str(call.from_user.id)
     if user_id not in user_data:  # проверка регистрации пользователя (на случай, если файл user_data удален)
-        user_data[user_id] = {'alts': 0, 'show_alts': False, 'name': user_name}
+        user_data[user_id] = {"alts": 0, 'show_alts': False, 'name': user_name}
         save_to_json()
 
     ms_id = call.message.message_id
@@ -95,7 +95,7 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
                                                                    'возвышают свою персону. ')
         return
     if call.data == 'upload':
-        stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
+        stats = (f'Текущий баланс - {user_data[user_id]["alts"]} альтов.\n\n'
                  f'Максимально возможный баланс - 250 альтов')
 
         if call.message.text == stats:
@@ -103,7 +103,7 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
             keyboard = None
             bot.edit_message_text(chat_id=c_id, message_id=ms_id, text=stats, reply_markup=keyboard)
             time.sleep(2)
-            stats = (f'Текущий баланс - {user_data[user_id]['alts']} альтов.\n\n'
+            stats = (f'Текущий баланс - {user_data[user_id]["alts"]} альтов.\n\n'
                      f'Максимально возможный баланс - 250 альтов')
         keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
         bot.edit_message_text(chat_id=c_id, message_id=ms_id, text=stats, reply_markup=keyboard)
@@ -144,7 +144,7 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
     # --------------------------------------------------КВЕСТ-----------------------------------------------------------
     else:
         if call.data == 'darkness':  # начало квеста
-            user_data[user_id]['alts'] = 0
+            user_data[user_id]["alts"] = 0
             bot.edit_message_caption(chat_id=c_id, message_id=ms_id, caption='Отлично! Начало через...',
                                      reply_markup=None)
 
@@ -158,9 +158,9 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
         current_location = call.data  # получаем локацию пользователя
         user_data[user_id]['current_location'] = current_location
         # --------------------------------------------------------------------------------------------------------------
-        num_alts = user_data[user_id]['alts']
+        num_alts = user_data[user_id]["alts"]
         alts = count(current_location, num_alts)  # расчет баланса
-        user_data[user_id]['alts'] = alts
+        user_data[user_id]["alts"] = alts
 
         text = plot[current_location]['text']  # контент хранится в словаре plot
         pic = plot[current_location]['pic']  # контент хранится в словаре plot
@@ -207,7 +207,7 @@ def show_statistics(message):
     user_id = str(message.from_user.id)
     c_id = message.chat.id
     if user_id not in user_data:  # проверка регистрации пользователя (на случай, если файл user_data удален)
-        user_data[user_id] = {'alts': 0, 'show_alts': False, 'name': user_name}
+        user_data[user_id] = {"alts": 0, 'show_alts': False, 'name': user_name}
         save_to_json()
 
     stats = (f'Текущий баланс - {user_data[user_id]["alts"]} альтов.\n\n'
