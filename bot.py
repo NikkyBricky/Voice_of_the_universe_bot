@@ -4,7 +4,7 @@ import json
 import telebot
 import os
 from dotenv import load_dotenv
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto, BotCommand, BotCommandScope
 from other_funcs import answering_any, count
 import time
 load_dotenv()
@@ -40,12 +40,20 @@ with open('plot.json', 'r', encoding='utf8') as file:
 # ----------------------------------------------------ЗАПУСК------------------------------------------------------------
 @bot.message_handler(commands=['start'])
 def start(message):
+    c_id = message.chat.id
     load_from_json()
     user_name = message.from_user.first_name
-    c_id = message.chat.id
     user_id = str(message.from_user.id)
     if user_id not in user_data:  # проверка регистрации пользователя
         user_data[user_id] = {"alts": 0, 'show_alts': False, 'name': user_name}
+        commands = [  # Установка списка команд с областью видимости и описанием
+            BotCommand('start', 'перезапустить бота'),
+            BotCommand('help', 'узнайте о доступных командах'),
+            BotCommand('show_stat', 'ваш баланс')
+        ]
+
+        bot.set_my_commands(commands)
+        BotCommandScope('private', chat_id=c_id)
     save_to_json()
 
     # вывод приветственного сообщения
