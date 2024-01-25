@@ -108,12 +108,10 @@ def game_logic(call):  # т.к. кнопки только инлайн, вся �
                  f'Максимально возможный баланс - 250 альтов')
 
         if call.message.text == stats:
-            stats += '\n\n Ваш баланс не изменился'
+            new_stats = stats + '\n\n Ваш баланс не изменился'
             keyboard = None
-            bot.edit_message_text(chat_id=c_id, message_id=ms_id, text=stats, reply_markup=keyboard)
+            bot.edit_message_text(chat_id=c_id, message_id=ms_id, text=new_stats, reply_markup=keyboard)
             time.sleep(2)
-            stats = (f'Текущий баланс - {user_data[user_id]["alts"]} альтов.\n\n'
-                     f'Максимально возможный баланс - 250 альтов')
         keyboard = InlineKeyboardMarkup().add(InlineKeyboardButton(text='Обновить', callback_data='upload'))
         bot.edit_message_text(chat_id=c_id, message_id=ms_id, text=stats, reply_markup=keyboard)
         return
