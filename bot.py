@@ -44,6 +44,7 @@ def start(message):
     load_from_json()
     user_name = message.from_user.first_name
     user_id = str(message.from_user.id)
+    user_data[user_id]['alts'] = 0
     if user_id not in user_data:  # проверка регистрации пользователя
         user_data[user_id] = {"alts": 0, 'show_alts': False, 'name': user_name}
         commands = [  # Установка списка команд с областью видимости и описанием
